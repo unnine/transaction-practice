@@ -17,7 +17,6 @@ public class ApprovalServiceImpl implements ApprovalService {
     private final ApprovalDao approvalDao;
 
     @Override
-    @Transactional
     public void approve(ApprovalVO vo) {
 
         try {
