@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TrialServiceImpl implements TrialService {
 
     private final ApprovalServiceImpl approvalService;
-    private final innerTrial innerTrial;
+    private final InnerTrial innerTrial;
 
     @Override
     public TrialVO startTrial(TrialVO param) {
@@ -30,7 +30,7 @@ public class TrialServiceImpl implements TrialService {
 
     @Service
     @RequiredArgsConstructor
-    static class innerTrial{
+    static class InnerTrial{
 
         private final TrialDao trialDao;
 

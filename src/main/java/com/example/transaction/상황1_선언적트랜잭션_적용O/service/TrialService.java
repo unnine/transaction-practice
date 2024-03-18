@@ -8,4 +8,9 @@ public interface TrialService {
 
     TrialVO updateTrialInfo(TrialVO param, Integer idx);
 
+    void approve(TrialVO param);
+
+    void createTrial(TrialVO param);
+
+    void updateTrial(TrialVO param);
 }

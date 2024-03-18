@@ -28,14 +28,16 @@ public class TrialController {
 
     @PostMapping
     public ResponseEntity<TrialVO> startTrial(@RequestBody TrialVO param) {
-        TrialVO result = trialService.startTrial(param);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        trialService.createTrial(param);
+        trialService.approve(param);
+        return new ResponseEntity<>(param, HttpStatus.CREATED);
     }
 
     @PutMapping("/{idx}")
     public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
-        TrialVO result = trialService.updateTrialInfo(param, idx);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        trialService.updateTrial(param);
+        trialService.approve(param);
+        return new ResponseEntity<>(param, HttpStatus.OK);
     }
 
 }
