@@ -13,34 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class TrialServiceImpl implements TrialService {
 
     private final TrialDao trialDao;
-    private final ApprovalService approvalService;
 
     @Override
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        approve(param);
         return param;
     }
 
     @Override
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
-        approvalService.approve(param.getApprovalVO());
         return param;
-    }
-
-    @Override
-    public void approve(TrialVO param){
-        approvalService.approve(param.getApprovalVO());
-    }
-
-    @Override
-    public void createTrial(TrialVO param){
-        trialDao.create(param);
-    }
-
-    @Override
-    public void updateTrial(TrialVO param){
-        trialDao.update(param);
     }
 }
