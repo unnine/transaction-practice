@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 문제 4.
  *
- * service 패키지에 선언적 트랜잭션이 적용되어 있다고 합니다.
+ * service 패키지에 선언적 트랜잭션 AOP가 적용되어 있다고 합니다.
  * 그리고 서버는 2명 이상의 사용자로부터 거의 동시에 시험 시작 요청을 받았습니다.
  *
  *
