@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TrialServiceImplProxy implements TrialService{
 
     private final TrialServiceImplInner trialServiceImplInner;
-    private final ApprovalServiceImpl approvalService;
+    private final ApprovalServiceImplProxy approvalService;
 
     @Override
     public TrialVO startTrial(TrialVO param) {
@@ -23,7 +23,7 @@ public class TrialServiceImplProxy implements TrialService{
 
     @Override
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
-        trialServiceImplInner.updateTrialInfo(param, idx);
+        trialServiceImplInner.updateTrialInfo(param);
         approvalService.approve(param.getApprovalVO());
         return param;
     }
@@ -41,7 +41,7 @@ public class TrialServiceImplProxy implements TrialService{
         }
 
         @Transactional
-        public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
+        public TrialVO updateTrialInfo(TrialVO param) {
             trialDao.update(param);
             return param;
         }

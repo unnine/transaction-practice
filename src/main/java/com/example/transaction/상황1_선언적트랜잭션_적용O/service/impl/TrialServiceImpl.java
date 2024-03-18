@@ -17,7 +17,6 @@ public class TrialServiceImpl implements TrialService {
     @Override
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-
         approvalService.approve(param.getApprovalVO());
         return param;
     }
