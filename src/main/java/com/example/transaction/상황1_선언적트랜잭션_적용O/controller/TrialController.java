@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 문제 1.
  *
- * service 패키지에 선언적 트랜잭션이 적용되어 있다고 합니다.
+ * service 패키지에 선언적 트랜잭션 AOP가 적용되어 있다고 합니다.
  *
  *
  * === 소스 수정 ===
