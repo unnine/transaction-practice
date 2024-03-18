@@ -23,8 +23,8 @@ public class TrialServiceImpl implements TrialService {
 
     @Override
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
-        trialDao.update(param);
         approvalService.approve(param.getApprovalVO());
+        trialDao.update(param);
         return param;
     }
 }
