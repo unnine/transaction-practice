@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 발생 가능한 문제
+ * SelectKey 조회 시는 DB 락이 없기 때문에 중복된 PK를 가져올 가능성이 생김
+ *
  * - 해결법
+ * 조회 쿼리에 SELECT FOR UPDATE를 사용해 조회 시 부터 락을 가져옴
  */
 
 @RestController
