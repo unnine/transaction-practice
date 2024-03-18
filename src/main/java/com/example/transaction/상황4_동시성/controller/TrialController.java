@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
  *
  * - 해결법
  * 조회 쿼리에 SELECT FOR UPDATE를 사용해 조회 시 부터 락을 가져옴
+ *  - SELECT FOR UPDATE 사용 시 조회때부터 DB rock를 사용하기 때문에 
+ *    조회 - 입력 - 커밋을 모두 수행 한 후에 다음 커넥션이 접근 할 수 있음
+ *    이로 인해서 성능 저하가 발생될 우려가 있음
  */
 
 @RestController

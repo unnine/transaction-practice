@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class TrialServiceImplProxy implements TrialService {
+public class TrialServiceImplProxy implements TrialService{
 
     private final TrialServiceImplInner trialServiceImplInner;
     private final ApprovalServiceImpl approvalService;
@@ -28,20 +28,19 @@ public class TrialServiceImplProxy implements TrialService {
         return param;
     }
 
+    @Service
     @RequiredArgsConstructor
-    static class TrialServiceImplInner implements TrialService{
+    static class TrialServiceImplInner{
 
         private final TrialDao trialDao;
 
         @Transactional
-        @Override
         public TrialVO startTrial(TrialVO param) {
             trialDao.create(param);
             return param;
         }
 
         @Transactional
-        @Override
         public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
             trialDao.update(param);
             return param;
