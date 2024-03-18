@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.*;
  *
  * === 서술 ===
  * 다음을 설명해주세요.
- * - 발생 가능한 문제
+ * - 발생 가능한 문제 : 순서가 엉킴 -> 트랜잭션이 종료되기 전에 다른곳에서 변경이 가능함
  * - 해결법
+ * - 순차적으로 문제 해결 -> SELECT KEY 실행 시 SELECT FOR UPDATE 구문 사용 -> 조회 시점에 DB락을 가져가서 다른 세션이 접근하지 못하도록 막음
  */
 
 @RestController

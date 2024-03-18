@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ * 정답 : 런타임익셉션이 발생했을 때 호출한 서비스에 익셉션을 보내므로 호출한 서비스에서 예외를 잡지 않으면 결국 모두 롤백이 일어난다.
  * - Propagation.REQUIRES_NEW가 필요한 상황은?
+ * 정답 : 트랜잭션 분리를 위해 사용 -> 외부 트랜잭션에 영향을 주지 않기 위해 -> 단, 예외처리 필요
  */
 
 @RestController
