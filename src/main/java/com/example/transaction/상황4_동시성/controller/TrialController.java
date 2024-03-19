@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 발생 가능한 문제
+ *    동시에 같은 데이터를 수정하게 되면 일관성이 깨질수 있다.
+ *
  * - 해결법
+ *    Lock을 걸수도 있고, Transaction의 격리 수준을 조절할 수도 있다.
  */
 
 @RestController

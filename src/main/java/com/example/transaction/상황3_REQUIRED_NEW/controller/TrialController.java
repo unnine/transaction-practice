@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ *    동일 스레드이므로 승인 로직에서 예외가 터지면 시험 로직에서도 예외가 전파되어 시험 로직도 롤백되어 버린다.
  * - Propagation.REQUIRES_NEW가 필요한 상황은?
+ *    트랜잭션 중간에 다른 로직을 동작 해야하나, 예외 발생이 영향을 주면 안되는 경우
  */
 
 @RestController

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,10 @@ public class ApprovalServiceImpl implements ApprovalService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void approve(ApprovalVO vo) {
-        approvalDao.create(vo);
+        try {
+            approvalDao.create(vo);
+        } catch (RuntimeException e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        }
     }
 }
