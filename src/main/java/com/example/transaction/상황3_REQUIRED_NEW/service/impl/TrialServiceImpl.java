@@ -29,4 +29,15 @@ public class TrialServiceImpl implements TrialService {
         }
         return param;
     }
+
+    @Override
+    public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
+        trialDao.update(param);
+        try{
+            approvalService.approve(param.getApprovalVO());
+        }catch (UncheckedIOException e) {
+            log.info("계속 정상 실행");
+        }
+        return param;
+    }
 }

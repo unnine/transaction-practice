@@ -18,4 +18,7 @@ public interface TrialDao {
     @Insert("INSERT INTO TRIAL (IDX, ...) VALUES (#{idx}, ...)")
     int create(TrialVO vo);
 
+    @Update("UPDATE TRIAL SET ... WHERE IDX = #{idx}")
+    int update(TrialVO vo);
+
 }

@@ -41,5 +41,10 @@ public class TrialController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{idx}")
+    public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
+        TrialVO result = trialService.updateTrialInfo(param, idx);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 
 }

@@ -6,5 +6,6 @@ public interface TrialService {
 
     TrialVO startTrial(TrialVO param);
 
+    TrialVO updateTrialInfo(TrialVO param, Integer idx);
 
 }
