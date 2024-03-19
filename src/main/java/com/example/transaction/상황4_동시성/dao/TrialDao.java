@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface TrialDao {
 
     @SelectKey(
-            statement = "SELECT NVL(MAX(IDX), 0) + 1 FROM TRIAL",
+            statement = "SELECT NVL(MAX(IDX), 0) + 1 FROM TRIAL FOR UPDATE",
             keyProperty = "idx",
             before = true,
             resultType = Integer.class

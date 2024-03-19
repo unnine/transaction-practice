@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.*;
  *
  * === 서술 ===
  * - 원인
+ * - 자바에서는 기본적으로 this가 생략되어져 있는데 프록시 객체가 아닌 실제 객체에서 트랜잭션이 걸린 메소드를 호출해도 이미 실제 객체 내부에 있기 때문에 트랜잭션 적용이 안된다.
+ *
  * - 해결방법
+ * - 정답 : 시험 시작, 수정 메서드에 트랜잭션을 적용시킴
  */
 
 @RestController
@@ -32,12 +35,6 @@ public class TrialController {
     public ResponseEntity<TrialVO> startTrial(@RequestBody TrialVO param) {
         TrialVO result = trialService.startTrial(param);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{idx}")
-    public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
-        TrialVO result = trialService.updateTrialInfo(param, idx);
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
