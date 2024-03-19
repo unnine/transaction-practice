@@ -1,5 +1,6 @@
 package com.example.transaction.상황1_선언적트랜잭션_적용O.controller;
 
+import com.example.transaction.상황1_선언적트랜잭션_적용O.service.ApprovalService;
 import com.example.transaction.상황1_선언적트랜잭션_적용O.service.TrialService;
 import com.example.transaction.상황1_선언적트랜잭션_적용O.vo.TrialVO;
 import lombok.RequiredArgsConstructor;
@@ -25,16 +26,19 @@ import org.springframework.web.bind.annotation.*;
 public class TrialController {
 
     private final TrialService trialService;
+    private final ApprovalService approvalService;
 
     @PostMapping
     public ResponseEntity<TrialVO> startTrial(@RequestBody TrialVO param) {
         TrialVO result = trialService.startTrial(param);
+        approvalService.approve(result.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
     @PutMapping("/{idx}")
     public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
         TrialVO result = trialService.updateTrialInfo(param, idx);
+        approvalService.approve(result.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

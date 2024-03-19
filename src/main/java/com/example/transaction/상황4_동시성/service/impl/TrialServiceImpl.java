@@ -17,7 +17,11 @@ public class TrialServiceImpl implements TrialService {
     @Override
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        approvalService.approve(param.getApprovalVO());
+        try{
+            approvalService.approve(param.getApprovalVO());
+        } catch(Exception e){
+            System.out.println("예외처리" + e);
+        }
         return param;
     }
 

@@ -1,7 +1,7 @@
-package com.example.transaction.상황4_동시성.controller;
+package com.example.transaction.상황5_Transactional.controller;
 
-import com.example.transaction.상황4_동시성.service.TrialService;
-import com.example.transaction.상황4_동시성.vo.TrialVO;
+import com.example.transaction.상황5_Transactional.service.TrialService;
+import com.example.transaction.상황5_Transactional.vo.TrialVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,23 +9,20 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
- * 문제 4.
+ * 문제 1.
  *
- * service 패키지에 선언적 트랜잭션 AOP가 적용되어 있다고 합니다.
- * 그리고 서버는 2명 이상의 사용자로부터 거의 동시에 시험 시작 요청을 받았습니다.
+ * 승인 처리하는 메서드에 @Transactional이 선언되어 있습니다.
+ * 그런데, 서비스에서 에러가 발생했는데 승인 처리가 롤백되지 않았습니다.
  *
+ * ※ IDE에서 오류를 표시해주는 밑줄은 확인하지 않고 푸는 것을 권장드립니다.
  *
  * === 서술 ===
- * 다음을 설명해주세요.
- * - 발생 가능한 문제
- * 1) 데이터 일관성 문제
- * - 해결법
- * 1) 트랜잭션 격리 수준 컨트롤
- * 2) 분산 트랜잭션 사용
+ * - 원인
+ * - 해결방법
  */
 
 @RestController
-@RequestMapping("/api/v1/trial")
+@RequestMapping("/api/v1/trail")
 @RequiredArgsConstructor
 public class TrialController {
 

@@ -22,8 +22,15 @@ import org.springframework.web.bind.annotation.*;
  *
  * === 서술 ===
  * 다음을 설명해주세요.
+ *
  * - 원인은?
+ * approvalService.approve();에서 발생한 예외 사항에 대한 복구 처리 로직이 없기 때문에 위의 문제 발생됨
+ * approvalService.approve() 발생 예외 -> approve 트랜잭션 rollback -> 트랜잭션 AOP 예외 밖으로 전달
+ * -> startTrial 메소드로 예외 전달됨 -> 그런데 처리 로직이 없음 -> 해당 트랜잭션 예외로 간주되어 rollback처리됨
+ *
  * - Propagation.REQUIRES_NEW가 필요한 상황은?
+ * 1) 예상되는 예외 사항에서 트랜잭션을 분리하여 로직을 처리해야할 때 필요
+ * 2) 동시 사용자가 같은 로직을 요청 가능한 경우, 다른 사용자의 처리가 실패해도 정상 요청한 사용자는 처리되야할 때 필요
  */
 
 @RestController

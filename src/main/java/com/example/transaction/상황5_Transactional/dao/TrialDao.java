@@ -1,11 +1,10 @@
-package com.example.transaction.상황2_선언적트랜잭션_적용X.dao;
+package com.example.transaction.상황5_Transactional.dao;
 
-import com.example.transaction.상황2_선언적트랜잭션_적용X.vo.TrialVO;
+import com.example.transaction.상황5_Transactional.vo.TrialVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface TrialDao {

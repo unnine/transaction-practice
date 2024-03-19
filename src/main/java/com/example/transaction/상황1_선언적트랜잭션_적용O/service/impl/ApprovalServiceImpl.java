@@ -5,6 +5,7 @@ import com.example.transaction.상황1_선언적트랜잭션_적용O.service.App
 import com.example.transaction.상황1_선언적트랜잭션_적용O.vo.ApprovalVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
