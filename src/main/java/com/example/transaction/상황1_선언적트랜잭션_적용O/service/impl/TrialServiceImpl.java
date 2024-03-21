@@ -20,6 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
  * 2. approvalService.approve(); 메소드에 REQUIRES_NEW 선언하여 신규 트랜잭션 생성함으로써 트랜잭션 분리
  * 3. TransactionTemplate 사용...?
  *
+ * === 24.03.21 피드백 ===
+ * - 내용: 상황해석2 다시 확인 필요....
+ *
  */
 @Service
 @RequiredArgsConstructor

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * - 해결방법
  * 1) @Transactional 어노테이션을 startTrial()과 updateTrialInfo() 메서드에 추가하여 트랜잭션 처리를 적용한다.
  * 2) Service에 @Transactional 선언하여 문제 해결한다.
+ * - 해결방법
  */
 
 @RestController

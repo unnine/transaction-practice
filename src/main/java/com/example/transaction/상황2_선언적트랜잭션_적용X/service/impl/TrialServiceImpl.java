@@ -18,6 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
  * 해결방안
  * 1) 트랜잭션 적용 후 approve에 REQUIRES_NEW 선언하여 트랜잭션 분리
  *
+ *  === 24.03.21 피드백 ===
+ *  - 내용: 불필요한 코드 제거
+ *  - 원인: annotation 추가에서 불필요한 코드 제거... 뭘까....
+ *
+ * 2차 해결방안
+ * 1) @Transactional 사용없이 해결하는 방식으로 접근 (@Transactional이 트랜잭션이 아님)
+ *
  */
 @Service
 @RequiredArgsConstructor
@@ -27,18 +34,25 @@ public class TrialServiceImpl implements TrialService {
     private final ApprovalServiceImpl approvalService;
 
     @Override
-    @Transactional
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        approvalService.approve(param.getApprovalVO());
+        try{
+            approvalService.approve(param.getApprovalVO());
+        } catch(RuntimeException e){
+            log.info("Error ====> 승인 요청 중 오류:", e);
+        }
         return param;
     }
 
     @Override
-    @Transactional
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
-        approvalService.approve(param.getApprovalVO());
+        try{
+            approvalService.approve(param.getApprovalVO());
+        } catch(RuntimeException e){
+            log.info("Error ====> 승인 요청 중 오류:", e);
+        }
+
         return param;
     }
 }
