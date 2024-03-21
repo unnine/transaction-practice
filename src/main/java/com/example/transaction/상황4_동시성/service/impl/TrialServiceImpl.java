@@ -5,8 +5,12 @@ import com.example.transaction.상황4_동시성.service.ApprovalService;
 import com.example.transaction.상황4_동시성.service.TrialService;
 import com.example.transaction.상황4_동시성.vo.TrialVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TrialServiceImpl implements TrialService {
@@ -15,17 +19,15 @@ public class TrialServiceImpl implements TrialService {
     private final ApprovalService approvalService;
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        try{
-            approvalService.approve(param.getApprovalVO());
-        } catch(Exception e){
-            System.out.println("예외처리" + e);
-        }
+        approvalService.approve(param.getApprovalVO());
         return param;
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         approvalService.approve(param.getApprovalVO());
         trialDao.update(param);

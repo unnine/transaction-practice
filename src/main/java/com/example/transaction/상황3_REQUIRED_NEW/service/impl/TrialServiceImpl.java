@@ -21,8 +21,8 @@ public class TrialServiceImpl implements TrialService {
         trialDao.create(param);
         try{
             approvalService.approve(param.getApprovalVO());
-        } catch(Exception e){
-            log.info("승인 오류 발생 / 처리 로직", e);
+        } catch(RuntimeException e){
+            log.info("Error ====> 승인 요청 중 오류:", e);
         }
         return param;
     }
@@ -32,8 +32,8 @@ public class TrialServiceImpl implements TrialService {
         trialDao.update(param);
         try{
             approvalService.approve(param.getApprovalVO());
-        } catch(Exception e){
-            log.info("승인 오류 발생 / 처리 로직", e);
+        } catch(RuntimeException e){
+            log.info("Error ====> 승인 요청 중 오류:", e);
         }
         return param;
     }

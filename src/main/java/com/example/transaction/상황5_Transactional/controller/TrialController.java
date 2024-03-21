@@ -18,7 +18,12 @@ import org.springframework.web.bind.annotation.*;
  *
  * === 서술 ===
  * - 원인
+ * 1) @Transactional이 approve() 메서드에만 적용되어 있고, startTrial()과 updateTrialInfo() 메서드에는 @Transactional이 적용되어 있지 않음.
+ * 메서드에서의 트랜잭션 처리가 제대로 이루어지지 않아 롤백이 진행되지 않음.
+ *
  * - 해결방법
+ * 1) @Transactional 어노테이션을 startTrial()과 updateTrialInfo() 메서드에 추가하여 트랜잭션 처리를 적용한다.
+ * 2) Service에 @Transactional 선언하여 문제 해결한다.
  */
 
 @RestController

@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * 적용사항2. trialDao.update(param)과 approvalService.approve(); 메소드가 트랜잭션 분리되어 동작하도록 코드 수정
  *
  * 해결방안
- * 1) 트랜잭션을 적용 후, 트랜잭션 분리
+ * 1) 트랜잭션 적용 후 approve에 REQUIRES_NEW 선언하여 트랜잭션 분리
  *
  */
 @Service

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * 해결방안
  * 1. controller에서 로직 분리 (트랜잭션 나뉘어 들어감..)
  * 2. approvalService.approve(); 메소드에 REQUIRES_NEW 선언하여 신규 트랜잭션 생성함으로써 트랜잭션 분리
- * 3. TransactionTemplate 사용...
+ * 3. TransactionTemplate 사용...?
  *
  */
 @Service
