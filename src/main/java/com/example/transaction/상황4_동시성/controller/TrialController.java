@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 발생 가능한 문제
- *    동시에 같은 데이터를 수정하게 되면 일관성이 깨질수 있다.
+ *    다른 트랜잭션과의 충돌 문제가 발생할 수 있다.
  *
  * - 해결법
- *    Lock을 걸수도 있고, Transaction의 격리 수준을 조절할 수도 있다.
+ *    TransactionSynchronizationManager
+ *    작업 스레드마다 독립적으로 컨낵션을 저장하고 관리하여 다중 사용자를 처리하는 서버의 멀
  */
 
 @RestController

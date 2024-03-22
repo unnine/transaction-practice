@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ *   시험로직과 시험로직이 같은 트렌잭션을 사용하기 있기 때문입니다.
+ *   승인 로직에서 예외를 try-catch로 잡아도 신규 트랜잭션이 아니기 때문에 트랜잭션에 rollbackOnly를 표시합니다.
+ *   그래서 시험 로직에서 트랜잭션 커밋을 하려 해도 트랜잭션이 rollbackOnly가 체크되어 UnexpectedRollbackException가 발생되고 롤백됩니다.
  */
 
 @RestController
