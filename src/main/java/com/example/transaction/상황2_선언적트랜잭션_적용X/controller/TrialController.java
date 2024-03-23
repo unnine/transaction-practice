@@ -2,6 +2,7 @@ package com.example.transaction.상황2_선언적트랜잭션_적용X.controller
 
 import com.example.transaction.상황2_선언적트랜잭션_적용X.service.ApprovalService;
 import com.example.transaction.상황2_선언적트랜잭션_적용X.service.TrialService;
+import com.example.transaction.상황2_선언적트랜잭션_적용X.vo.ApprovalVO;
 import com.example.transaction.상황2_선언적트랜잭션_적용X.vo.TrialVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,15 +33,19 @@ public class TrialController {
     @PostMapping
     public ResponseEntity<TrialVO> startTrial(@RequestBody TrialVO param) {
         TrialVO result = trialService.startTrial(param);
-        approvalService.approve(param.getApprovalVO());
+        startApproval(param.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
     @PutMapping("/{idx}")
     public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
         TrialVO result = trialService.updateTrialInfo(param, idx);
-        approvalService.approve(param.getApprovalVO());
+        startApproval(param.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    private void startApproval(@RequestBody ApprovalVO param) {
+        approvalService.approve(param);
     }
 
 }
