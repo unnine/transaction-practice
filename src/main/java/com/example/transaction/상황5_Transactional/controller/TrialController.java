@@ -24,7 +24,18 @@ import org.springframework.web.bind.annotation.*;
  * - 해결방법
  * 1) @Transactional 어노테이션을 startTrial()과 updateTrialInfo() 메서드에 추가하여 트랜잭션 처리를 적용한다.
  * 2) Service에 @Transactional 선언하여 문제 해결한다.
+ * 
+ * === 24.03.22 피드백 ===
+ * - 내용: 스프링 AOP 내부 호출과 트랜잭션 참고
+ *
+ * - 원인
+ * 1) 트랜잭션이 적용되지 않은 시험로직 메서드에서 approve 메서드를 내부 호출하여 사용하고 있기 때문에
+ * 트랜잭션이 적용되지 않은 객체가 가지고 있는 approve를 호출하여 사용하게 된다.
+ * 때문에 트랜잭션이 적용되지 않아 롤백이 진행되지 않게 된다.
+ *
  * - 해결방법
+ * 1) 클래스를 분리하여 외부호출하여 동작하도록 코들 수정한다. (
+ *
  */
 
 @RestController

@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ * approve 메서드는 신규 트랜잭션이 아니기 때문에
+ * 해당 메서드에서 발생된 예외로 인하여 트랜잭션 동기화 매니저에 rollbackOnly가 설정되어 시험 로직 또한 롤백되게 된다.
  */
 
 @RestController
