@@ -23,7 +23,12 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ *  승인 로직에서 발생한 예외를 처리하지 않아서 시험 로직으로 그 예외가 던져졌기 때문이다.
+ *  - 참고: 1. https://woodcock.tistory.com/40
+ *
  * - Propagation.REQUIRES_NEW가 필요한 상황은?
+ * 내부 트랜잭션과 외부 트랜잭션을 분리해야할 때 필요하다.
+ * - 참고: https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html
  */
 
 @RestController
