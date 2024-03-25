@@ -1,6 +1,8 @@
 package com.example.transaction.상황2_선언적트랜잭션_적용X.controller;
 
+import com.example.transaction.상황2_선언적트랜잭션_적용X.service.ApprovalService;
 import com.example.transaction.상황2_선언적트랜잭션_적용X.service.TrialService;
+import com.example.transaction.상황2_선언적트랜잭션_적용X.vo.ApprovalVO;
 import com.example.transaction.상황2_선언적트랜잭션_적용X.vo.TrialVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
  * === 소스 수정 ===
  * 1. 시험 시작 로직과 결재 로직의 트랜잭션을 분리해주세요.
  * 2. 시험 수정 로직과 결재 로직의 트랜잭션을 분리해주세요.
+ *
+ * 혹시... 기존 코드 수정할 게 없는걸까여??.....
+ *
  */
 
 @RestController

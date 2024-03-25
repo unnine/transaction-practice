@@ -12,19 +12,16 @@ import org.springframework.stereotype.Service;
 public class TrialServiceImpl implements TrialService {
 
     private final TrialDao trialDao;
-    private final ApprovalService approvalService;
 
     @Override
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        approvalService.approve(param.getApprovalVO());
         return param;
     }
 
     @Override
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
-        approvalService.approve(param.getApprovalVO());
         return param;
     }
 }
