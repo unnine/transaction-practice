@@ -17,7 +17,6 @@ public class TrialServiceImpl implements TrialService {
     private final ApprovalService approvalService;
 
     @Override
-    @Transactional
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
         approvalService.approve(param.getApprovalVO());
@@ -25,7 +24,6 @@ public class TrialServiceImpl implements TrialService {
     }
 
     @Override
-    @Transactional
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
         approvalService.approve(param.getApprovalVO());
@@ -33,3 +31,4 @@ public class TrialServiceImpl implements TrialService {
     }
 
 }
+

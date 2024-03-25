@@ -13,33 +13,22 @@ import java.io.UncheckedIOException;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@Transactional
 public class TrialServiceImpl implements TrialService {
 
     private final TrialDao trialDao;
     private final ApprovalServiceImpl approvalService;
 
     @Override
-    @Transactional
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        try{
-            approvalService.approve(param.getApprovalVO());
-        } catch (UncheckedIOException e) {
-            log.info("승인 예외 발생");
-        }
+        approvalService.approve(param.getApprovalVO());
         return param;
     }
 
     @Override
-    @Transactional
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
-        try {
-            approvalService.approve(param.getApprovalVO());
-        } catch (UncheckedIOException e) {
-            log.info("승인 예외 발생");
-        }
+        approvalService.approve(param.getApprovalVO());
         return param;
     }
 }

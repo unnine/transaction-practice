@@ -21,10 +21,6 @@ public class ApprovalServiceImpl implements ApprovalService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void approve(ApprovalVO vo) {
-        try{
-            approvalDao.create(vo);
-        }catch (UncheckedIOException e) {
-            log.info("예외 발생");
-        }
+        approvalDao.create(vo);
     }
 }
