@@ -4,12 +4,14 @@ import com.example.transaction.상황3_REQUIRED_NEW.dao.ApprovalDao;
 import com.example.transaction.상황3_REQUIRED_NEW.service.ApprovalService;
 import com.example.transaction.상황3_REQUIRED_NEW.vo.ApprovalVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ApprovalServiceImpl implements ApprovalService {
 
     private final ApprovalDao approvalDao;
@@ -17,6 +19,10 @@ public class ApprovalServiceImpl implements ApprovalService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void approve(ApprovalVO vo) {
-        approvalDao.create(vo);
+        try{
+            approvalDao.create(vo);
+        } catch(Exception e){
+            log.info("Error ====> 승인 요청 중 오류:", e);
+        }
     }
 }

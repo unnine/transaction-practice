@@ -38,23 +38,14 @@ public class TrialServiceImpl implements TrialService {
     @Override
     public TrialVO startTrial(TrialVO param) {
         trialDao.create(param);
-        try{
-            approvalService.approve(param.getApprovalVO());
-        } catch(RuntimeException e){
-            log.info("Error ====> 승인 요청 중 오류:", e);
-        }
+        approvalService.approve(param.getApprovalVO());
         return param;
     }
 
     @Override
     public TrialVO updateTrialInfo(TrialVO param, Integer idx) {
         trialDao.update(param);
-        try{
-            approvalService.approve(param.getApprovalVO());
-        } catch(RuntimeException e){
-            log.info("Error ====> 승인 요청 중 오류:", e);
-        }
-
+        approvalService.approve(param.getApprovalVO());
         return param;
     }
 }
