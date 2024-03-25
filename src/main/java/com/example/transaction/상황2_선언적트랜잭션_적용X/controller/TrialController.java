@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
  * === 소스 수정 ===
  * 1. 시험 시작 로직과 결재 로직의 트랜잭션을 분리해주세요.
  * 2. 시험 수정 로직과 결재 로직의 트랜잭션을 분리해주세요.
+ *
+ * 혹시... 기존 코드 수정할 게 없는걸까여??.....
+ *
  */
 
 @RestController
@@ -28,24 +31,16 @@ public class TrialController {
 
     private final TrialService trialService;
 
-    private final ApprovalService approvalService;
-
     @PostMapping
     public ResponseEntity<TrialVO> startTrial(@RequestBody TrialVO param) {
         TrialVO result = trialService.startTrial(param);
-        startApproval(param.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
     @PutMapping("/{idx}")
     public ResponseEntity<TrialVO> updateTrialInfo(@RequestBody TrialVO param, @PathVariable Integer idx) {
         TrialVO result = trialService.updateTrialInfo(param, idx);
-        startApproval(param.getApprovalVO());
         return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
-    private void startApproval(@RequestBody ApprovalVO param) {
-        approvalService.approve(param);
     }
 
 }
