@@ -18,7 +18,13 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 발생 가능한 문제
+ * 여러 트랜잭션이 동시에 수행되면서 한 트랜잭션이 수정한 내용을 다른 트랜잭션이
+ * 덮어쓰는 갱신 손실(Lost Update)가 발생한다.
+ *
  * - 해결법
+ * 락, 타임스탬프 등의 기법을 이용해 해결할 있다.
+ *
+ * - 참고: https://mangkyu.tistory.com/30
  */
 
 @RestController
