@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * 덮어쓰는 갱신 손실(Lost Update)가 발생한다.
  *
  * - 해결법
- * 락, 타임스탬프 등의 기법을 이용해 해결할 있다.
+ * 락, 타임스탬프 등의 기법을 이용해 해결할 수 있다.
  *
  * - 참고: https://mangkyu.tistory.com/30
  */

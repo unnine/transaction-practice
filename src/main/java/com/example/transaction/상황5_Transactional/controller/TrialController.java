@@ -18,7 +18,11 @@ import org.springframework.web.bind.annotation.*;
  *
  * === 서술 ===
  * - 원인
+ * 클래스가 아닌 메소드에 어노테이션을 선언했기 때문이다.
+ *
  * - 해결방법
+ * TrialServiceImpl의 approve 메서드에 어노테이션을 사용하지 않고,
+ * TrialServiceImpl 클래스에 @Tranactional 어노테이션을 사용한다
  */
 
 @RestController

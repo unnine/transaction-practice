@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
  * === 서술 ===
  * 다음을 설명해주세요.
  * - 원인은?
+ * ApprovalServiceImpl에 어노테이션을 사용한것이 아닌 startTrial와 updateTrialInfo에 어노테이션을
+ * 사용했기 때문에 startTrial에 있는 trialDao.update(param)과 approvalService.approve(param.getApprovalVO())가
+ * 하나의 트랜잭션으로 묶였기 때문이다.
  */
 
 @RestController
