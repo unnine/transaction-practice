@@ -30,7 +30,6 @@ public class TrialServiceImpl implements TrialService {
         return param;
     }
 
-    @Transactional
     public void approve(ApprovalVO vo) {
         approvalService.approve(vo);
     }
