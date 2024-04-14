@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
  * # 1<br/>
  * `@Transactional`이 AOP로 처리하기 때문에 발생하는 문제이다. 즉, AOP의 특성과 관련이 있다.<br/><br/>
  *
+ * # 2<br/>
+ * 원인을 서술하라. 단순히 내부 참조 문제라고 하는 것은 정확히 알고 쓴 것인지 판단하기 어렵다.<br/>
+ *
  * === 서술 ===<br/>
  * - 원인<br/>
  * AOP 내부 참조 문제
